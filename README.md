@@ -5,7 +5,7 @@ ASP.NET MVC based, open source, standards compliant, and extensible web applicat
 
 Technologies used in this kit:
 
-* Microsoft .NET Framework 4.0, C#
+* .NET Framework 4.0, C#
 * ASP.NET MVC 3.0
 * Entity Framework 4.0
 * Enterprise Library 5.1
