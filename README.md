@@ -1,9 +1,11 @@
 ﻿Web Application Starter Kit
 ===========================
 
-Solution template for Visual Studio 2010 which can be used for creating web applications.
+ASP.NET MVC based, open source, standards compliant, and extensible web application project template, aka starter kit.
 
-It is build on top of [ASP.NET MVC 3.0](http://www.asp.net/mvc), Entity Framework 4.0 and Enterprise Library 5.1
+Technologies used in this kit:
 
-Brought to you by [Koistya `Navin](http://github.com/koistya)
-
+* Microsoft .NET Framework 4.0, C#
+* ASP.NET MVC 3.0
+* Entity Framework 4.0
+* Enterprise Library 5.1
