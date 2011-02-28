@@ -3,7 +3,7 @@
 
 ASP.NET MVC based, open source, standards compliant, and extensible web application project template, aka starter kit.
 
-The latest version is at http://github.com/technomancy/emacs-starter-kit/
+The latest version is at [http://github.com/rialib/webapp](http://github.com/rialib/webapp)
 
 Technologies
 ------------
