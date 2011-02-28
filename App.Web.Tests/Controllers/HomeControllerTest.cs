@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Web;
-using App.Web.Controllers;
+﻿//-----------------------------------------------------------------------
+// <copyright file="HomeControllerTest.cs" company="RIA Library Foundation">
+//     Copyright © 2011 RIA Library Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace App.Web.Tests.Controllers
 {
+    using System.Web.Mvc;
+    using App.Web.Controllers;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class HomeControllerTest
     {

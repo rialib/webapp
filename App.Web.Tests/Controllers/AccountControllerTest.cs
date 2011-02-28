@@ -1,21 +1,24 @@
-﻿using System;
-using System.Security.Principal;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.Security;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using App.Web;
-using App.Web.Controllers;
-using App.Web.Models;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AccountControllerTest.cs" company="RIA Library Foundation">
+//     Copyright © 2011 RIA Library Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace App.Web.Tests.Controllers
 {
+    using System;
+    using System.Security.Principal;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Routing;
+    using System.Web.Security;
+    using App.Web.Controllers;
+    using App.Web.Models;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class AccountControllerTest
     {
-
         [TestMethod]
         public void ChangePassword_Get_ReturnsView()
         {
@@ -70,7 +73,7 @@ namespace App.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result;
             Assert.AreEqual(model, viewResult.ViewData.Model);
-            Assert.AreEqual("The current password is incorrect or the new password is invalid.", controller.ModelState[""].Errors[0].ErrorMessage);
+            Assert.AreEqual("The current password is incorrect or the new password is invalid.", controller.ModelState[String.Empty].Errors[0].ErrorMessage);
             Assert.AreEqual(10, viewResult.ViewData["PasswordLength"]);
         }
 
@@ -85,7 +88,7 @@ namespace App.Web.Tests.Controllers
                 NewPassword = "goodNewPassword",
                 ConfirmPassword = "goodNewPassword"
             };
-            controller.ModelState.AddModelError("", "Dummy error message.");
+            controller.ModelState.AddModelError(String.Empty, "Dummy error message.");
 
             // Act
             ActionResult result = controller.ChangePassword(model);
@@ -124,7 +127,7 @@ namespace App.Web.Tests.Controllers
             RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
             Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
             Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
-            Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignOut_WasCalled);
+            Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignOutWasCalled);
         }
 
         [TestMethod]
@@ -160,7 +163,7 @@ namespace App.Web.Tests.Controllers
             RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
             Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
             Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
-            Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignIn_WasCalled);
+            Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignInWasCalled);
         }
 
         [TestMethod]
@@ -182,7 +185,7 @@ namespace App.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(RedirectResult));
             RedirectResult redirectResult = (RedirectResult)result;
             Assert.AreEqual("/someUrl", redirectResult.Url);
-            Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignIn_WasCalled);
+            Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignInWasCalled);
         }
 
         [TestMethod]
@@ -205,7 +208,7 @@ namespace App.Web.Tests.Controllers
             RedirectToRouteResult redirectResult = (RedirectToRouteResult)result;
             Assert.AreEqual("Home", redirectResult.RouteValues["controller"]);
             Assert.AreEqual("Index", redirectResult.RouteValues["action"]);
-            Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignIn_WasCalled);
+            Assert.IsTrue(((MockFormsAuthenticationService)controller.FormsService).SignInWasCalled);
         }
 
         [TestMethod]
@@ -219,7 +222,7 @@ namespace App.Web.Tests.Controllers
                 Password = "goodPassword",
                 RememberMe = false
             };
-            controller.ModelState.AddModelError("", "Dummy error message.");
+            controller.ModelState.AddModelError(String.Empty, "Dummy error message.");
 
             // Act
             ActionResult result = controller.LogOn(model, null);
@@ -249,7 +252,7 @@ namespace App.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result;
             Assert.AreEqual(model, viewResult.ViewData.Model);
-            Assert.AreEqual("The user name or password provided is incorrect.", controller.ModelState[""].Errors[0].ErrorMessage);
+            Assert.AreEqual("The user name or password provided is incorrect.", controller.ModelState[String.Empty].Errors[0].ErrorMessage);
         }
 
         [TestMethod]
@@ -309,7 +312,7 @@ namespace App.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             ViewResult viewResult = (ViewResult)result;
             Assert.AreEqual(model, viewResult.ViewData.Model);
-            Assert.AreEqual("Username already exists. Please enter a different user name.", controller.ModelState[""].Errors[0].ErrorMessage);
+            Assert.AreEqual("Username already exists. Please enter a different user name.", controller.ModelState[String.Empty].Errors[0].ErrorMessage);
             Assert.AreEqual(10, viewResult.ViewData["PasswordLength"]);
         }
 
@@ -325,7 +328,7 @@ namespace App.Web.Tests.Controllers
                 Password = "goodPassword",
                 ConfirmPassword = "goodPassword"
             };
-            controller.ModelState.AddModelError("", "Dummy error message.");
+            controller.ModelState.AddModelError(String.Empty, "Dummy error message.");
 
             // Act
             ActionResult result = controller.Register(model);
@@ -356,8 +359,9 @@ namespace App.Web.Tests.Controllers
 
         private class MockFormsAuthenticationService : IFormsAuthenticationService
         {
-            public bool SignIn_WasCalled;
-            public bool SignOut_WasCalled;
+            public bool SignInWasCalled { get; set; }
+
+            public bool SignOutWasCalled { get; set; }
 
             public void SignIn(string userName, bool createPersistentCookie)
             {
@@ -365,51 +369,39 @@ namespace App.Web.Tests.Controllers
                 Assert.AreEqual("someUser", userName);
                 Assert.IsFalse(createPersistentCookie);
 
-                SignIn_WasCalled = true;
+                SignInWasCalled = true;
             }
 
             public void SignOut()
             {
-                SignOut_WasCalled = true;
+                SignOutWasCalled = true;
             }
         }
 
         private class MockHttpContext : HttpContextBase
         {
-            private readonly IPrincipal _user = new GenericPrincipal(new GenericIdentity("someUser"), null /* roles */);
-            private readonly HttpRequestBase _request = new MockHttpRequest();
+            private readonly IPrincipal user = new GenericPrincipal(new GenericIdentity("someUser"), null /* roles */);
+            private readonly HttpRequestBase request = new MockHttpRequest();
 
             public override IPrincipal User
             {
-                get
-                {
-                    return _user;
-                }
-                set
-                {
-                    base.User = value;
-                }
+                get { return user; }
+                set { base.User = value; }
             }
 
             public override HttpRequestBase Request
             {
-                get
-                {
-                    return _request;
-                }
+                get { return request; }
             }
         }
 
         private class MockHttpRequest : HttpRequestBase
         {
-            private readonly Uri _url = new Uri("http://mysite.example.com/");
+            private readonly Uri url = new Uri("http://mysite.example.com/");
 
             public override Uri Url
             {
-                get
-                {
-                    return _url;
-                }
+                get { return url; }
             }
         }
 
@@ -422,7 +414,7 @@ namespace App.Web.Tests.Controllers
 
             public bool ValidateUser(string userName, string password)
             {
-                return (userName == "someUser" && password == "goodPassword");
+                return userName == "someUser" && password == "goodPassword";
             }
 
             public MembershipCreateStatus CreateUser(string userName, string password, string email)
@@ -441,9 +433,8 @@ namespace App.Web.Tests.Controllers
 
             public bool ChangePassword(string userName, string oldPassword, string newPassword)
             {
-                return (userName == "someUser" && oldPassword == "goodOldPassword" && newPassword == "goodNewPassword");
+                return userName == "someUser" && oldPassword == "goodOldPassword" && newPassword == "goodNewPassword";
             }
         }
-
     }
 }

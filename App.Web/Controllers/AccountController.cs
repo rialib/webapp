@@ -6,6 +6,7 @@
 
 namespace App.Web.Controllers
 {
+    using System;
     using System.Web.Mvc;
     using System.Web.Routing;
     using System.Web.Security;
@@ -13,21 +14,11 @@ namespace App.Web.Controllers
 
     public class AccountController : Controller
     {
-
         public IFormsAuthenticationService FormsService { get; set; }
+
         public IMembershipService MembershipService { get; set; }
 
-        protected override void Initialize(RequestContext requestContext)
-        {
-            if (FormsService == null) { FormsService = new FormsAuthenticationService(); }
-            if (MembershipService == null) { MembershipService = new AccountMembershipService(); }
-
-            base.Initialize(requestContext);
-        }
-
-        // **************************************
-        // URL: /Account/LogOn
-        // **************************************
+        //// URL: /Account/LogOn
 
         public ActionResult LogOn()
         {
@@ -53,7 +44,7 @@ namespace App.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError(String.Empty, "The user name or password provided is incorrect.");
                 }
             }
 
@@ -61,9 +52,7 @@ namespace App.Web.Controllers
             return View(model);
         }
 
-        // **************************************
-        // URL: /Account/LogOff
-        // **************************************
+        //// URL: /Account/LogOff
 
         public ActionResult LogOff()
         {
@@ -72,9 +61,7 @@ namespace App.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // **************************************
-        // URL: /Account/Register
-        // **************************************
+        //// URL: /Account/Register
 
         public ActionResult Register()
         {
@@ -97,7 +84,7 @@ namespace App.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", AccountValidation.ErrorCodeToString(createStatus));
+                    ModelState.AddModelError(String.Empty, AccountValidation.ErrorCodeToString(createStatus));
                 }
             }
 
@@ -106,9 +93,7 @@ namespace App.Web.Controllers
             return View(model);
         }
 
-        // **************************************
-        // URL: /Account/ChangePassword
-        // **************************************
+        //// URL: /Account/ChangePassword
 
         [Authorize]
         public ActionResult ChangePassword()
@@ -129,7 +114,7 @@ namespace App.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                    ModelState.AddModelError(String.Empty, "The current password is incorrect or the new password is invalid.");
                 }
             }
 
@@ -138,14 +123,26 @@ namespace App.Web.Controllers
             return View(model);
         }
 
-        // **************************************
-        // URL: /Account/ChangePasswordSuccess
-        // **************************************
+        //// URL: /Account/ChangePasswordSuccess
 
         public ActionResult ChangePasswordSuccess()
         {
             return View();
         }
 
+        protected override void Initialize(RequestContext requestContext)
+        {
+            if (FormsService == null)
+            {
+                FormsService = new FormsAuthenticationService();
+            }
+
+            if (MembershipService == null)
+            {
+                MembershipService = new AccountMembershipService();
+            }
+
+            base.Initialize(requestContext);
+        }
     }
 }

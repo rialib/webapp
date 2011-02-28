@@ -32,8 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\References\System.Web.Mvc.dll</HintPath>
     </Reference>
@@ -49,6 +51,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\CustomApplication.cs" />
+    <Compile Include="Web\FormsAuthenticationService.cs" />
+    <Compile Include="Web\MembershipService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
