@@ -1,10 +1,12 @@
 ﻿Web Application Starter Kit
 ===========================
-**Work smarter not harder**
 
 ASP.NET MVC based, open source, standards compliant, and extensible web application project template, aka starter kit.
 
-Technologies used in this kit:
+The latest version is at http://github.com/technomancy/emacs-starter-kit/
+
+Technologies
+------------
 
 * .NET Framework 4.0, C#
 * ASP.NET MVC 3.0
