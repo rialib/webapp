@@ -21,7 +21,7 @@ Technologies used
 ------------
 
  * .NET Framework 4.0, C#
- * ASP.NET MVC 3.0 ![External Link](http://code.google.com/edu/images/external.png)
+ * [ASP.NET MVC 3.0](http://www.asp.net/mvc)
  * Entity Framework 4.0
  * Enterprise Library 5.1
  * jQuery 1.5.1
