@@ -20,11 +20,11 @@ What's In the bag?
 Technologies used
 ------------
 
- * .NET Framework 4.0, C#
+ * [.NET Framework 4.0](http://www.microsoft.com/net/), [C#](http://msdn.microsoft.com/vcsharp)
  * [ASP.NET MVC 3.0](http://www.asp.net/mvc)
- * Entity Framework 4.0
- * Enterprise Library 5.1
- * jQuery 1.5.1
+ * [Entity Framework 5.0](http://msdn.microsoft.com/en-us/data/aa937723)
+ * [Enterprise Library 5.0](http://msdn.microsoft.com/en-us/library/ff648951.aspx)
+ * [jQuery 1.5.1](http://www.jquery.com)
 
 Credits
 -------
