@@ -19,7 +19,6 @@ What's In the bag?
 
 Technologies used
 ------------
-This kit utilizes the following technologies:
 
  * .NET Framework 4.0, C#
  * ASP.NET MVC 3.0
