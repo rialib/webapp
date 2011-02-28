@@ -1,5 +1,6 @@
 ﻿Web Application Starter Kit
 ===========================
+**Work smarter not harder**
 
 ASP.NET MVC based, open source, standards compliant, and extensible web application project template, aka starter kit.
 
