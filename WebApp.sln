@@ -3,12 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{8586FE54-AB61-4847-9A82-568E511A1910}"
 	ProjectSection(SolutionItems) = preProject
+		References\EntityFramework.dll = References\EntityFramework.dll
+		References\EntityFramework.xml = References\EntityFramework.xml
 		References\System.Web.Mvc.dll = References\System.Web.Mvc.dll
 		References\System.Web.Mvc.xml = References\System.Web.Mvc.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90226E72-84E9-449A-88BC-BAF2F7B282A6}"
 	ProjectSection(SolutionItems) = preProject
+		Settings.StyleCop = Settings.StyleCop
 		Solution Items\SolutionInfo.cs = Solution Items\SolutionInfo.cs
 	EndProjectSection
 EndProject

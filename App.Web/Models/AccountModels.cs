@@ -13,170 +13,8 @@ namespace App.Web.Models
     using System.Web.Mvc;
     using System.Web.Security;
 
-    #region Models
-
-    public class ChangePasswordModel
-    {
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
-        public string OldPassword { get; set; }
-
-        [Required]
-        [ValidatePasswordLength]
-        [DataType(DataType.Password)]
-        [Display(Name = "New password")]
-        public string NewPassword { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
-    }
-
-    public class LogOnModel
-    {
-        [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
-    }
-
-
-    public class RegisterModel
-    {
-        [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
-
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email address")]
-        public string Email { get; set; }
-
-        [Required]
-        [ValidatePasswordLength]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
-    }
-    #endregion
-
-    #region Services
-    // The FormsAuthentication type is sealed and contains static members, so it is difficult to
-    // unit test code that calls its members. The interface and helper class below demonstrate
-    // how to create an abstract wrapper around such a type in order to make the AccountController
-    // code unit testable.
-
-    public interface IMembershipService
-    {
-        int MinPasswordLength { get; }
-
-        bool ValidateUser(string userName, string password);
-        MembershipCreateStatus CreateUser(string userName, string password, string email);
-        bool ChangePassword(string userName, string oldPassword, string newPassword);
-    }
-
-    public class AccountMembershipService : IMembershipService
-    {
-        private readonly MembershipProvider _provider;
-
-        public AccountMembershipService()
-            : this(null)
-        {
-        }
-
-        public AccountMembershipService(MembershipProvider provider)
-        {
-            _provider = provider ?? Membership.Provider;
-        }
-
-        public int MinPasswordLength
-        {
-            get
-            {
-                return _provider.MinRequiredPasswordLength;
-            }
-        }
-
-        public bool ValidateUser(string userName, string password)
-        {
-            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
-            if (String.IsNullOrEmpty(password)) throw new ArgumentException("Value cannot be null or empty.", "password");
-
-            return _provider.ValidateUser(userName, password);
-        }
-
-        public MembershipCreateStatus CreateUser(string userName, string password, string email)
-        {
-            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
-            if (String.IsNullOrEmpty(password)) throw new ArgumentException("Value cannot be null or empty.", "password");
-            if (String.IsNullOrEmpty(email)) throw new ArgumentException("Value cannot be null or empty.", "email");
-
-            MembershipCreateStatus status;
-            _provider.CreateUser(userName, password, email, null, null, true, null, out status);
-            return status;
-        }
-
-        public bool ChangePassword(string userName, string oldPassword, string newPassword)
-        {
-            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
-            if (String.IsNullOrEmpty(oldPassword)) throw new ArgumentException("Value cannot be null or empty.", "oldPassword");
-            if (String.IsNullOrEmpty(newPassword)) throw new ArgumentException("Value cannot be null or empty.", "newPassword");
-
-            // The underlying ChangePassword() will throw an exception rather
-            // than return false in certain failure scenarios.
-            try
-            {
-                MembershipUser currentUser = _provider.GetUser(userName, true /* userIsOnline */);
-                return currentUser.ChangePassword(oldPassword, newPassword);
-            }
-            catch (ArgumentException)
-            {
-                return false;
-            }
-            catch (MembershipPasswordException)
-            {
-                return false;
-            }
-        }
-    }
-
-    public interface IFormsAuthenticationService
-    {
-        void SignIn(string userName, bool createPersistentCookie);
-        void SignOut();
-    }
-
-    public class FormsAuthenticationService : IFormsAuthenticationService
-    {
-        public void SignIn(string userName, bool createPersistentCookie)
-        {
-            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
-
-            FormsAuthentication.SetAuthCookie(userName, createPersistentCookie);
-        }
-
-        public void SignOut()
-        {
-            FormsAuthentication.SignOut();
-        }
-    }
-    #endregion
-
     #region Validation
+
     public static class AccountValidation
     {
         public static string ErrorCodeToString(MembershipCreateStatus createStatus)
@@ -221,33 +59,94 @@ namespace App.Web.Models
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public sealed class ValidatePasswordLengthAttribute : ValidationAttribute, IClientValidatable
     {
-        private const string _defaultErrorMessage = "'{0}' must be at least {1} characters long.";
-        private readonly int _minCharacters = Membership.Provider.MinRequiredPasswordLength;
+        private const string DefaultErrorMessage = "'{0}' must be at least {1} characters long.";
+        private readonly int minCharacters = Membership.Provider.MinRequiredPasswordLength;
 
         public ValidatePasswordLengthAttribute()
-            : base(_defaultErrorMessage)
+            : base(DefaultErrorMessage)
         {
         }
 
         public override string FormatErrorMessage(string name)
         {
-            return String.Format(CultureInfo.CurrentCulture, ErrorMessageString,
-                name, _minCharacters);
+            return String.Format(CultureInfo.CurrentCulture, ErrorMessageString, name, minCharacters);
         }
 
         public override bool IsValid(object value)
         {
             string valueAsString = value as string;
-            return (valueAsString != null && valueAsString.Length >= _minCharacters);
+            return valueAsString != null && valueAsString.Length >= minCharacters;
         }
 
         public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
         {
-            return new[]{
-                new ModelClientValidationStringLengthRule(FormatErrorMessage(metadata.GetDisplayName()), _minCharacters, int.MaxValue)
+            return new[]
+            {
+                new ModelClientValidationStringLengthRule(FormatErrorMessage(metadata.GetDisplayName()), minCharacters, Int32.MaxValue)
             };
         }
     }
+
     #endregion
 
+    #region Models
+
+    public class ChangePasswordModel
+    {
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Current password")]
+        public string OldPassword { get; set; }
+
+        [Required]
+        [ValidatePasswordLength]
+        [DataType(DataType.Password)]
+        [Display(Name = "New password")]
+        public string NewPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm new password")]
+        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+    }
+
+    public class LogOnModel
+    {
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
+    }
+
+    public class RegisterModel
+    {
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email address")]
+        public string Email { get; set; }
+
+        [Required]
+        [ValidatePasswordLength]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+    }
+
+    #endregion
 }
