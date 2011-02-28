@@ -13,4 +13,4 @@ Technologies used in this kit:
 Credits
 -------
 
-Web Application Starter Kit is Open Source, released under the terms of the new BSD license; see the [LICENSE.md](https://github.com/rialib/webapp/blob/master/LICENSE.md) file.
+Web Application Starter Kit is Open Source, released under the terms of the New BSD License; see the [LICENSE.md](https://github.com/rialib/webapp/blob/master/LICENSE.md) file.
