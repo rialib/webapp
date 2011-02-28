@@ -12,6 +12,7 @@ What's In the bag?
   * IoC setup with Unity 2.0
   * Global error handling and logging
   * Custom error pages
+  * Email templates & sending queue
   * Data access layer mockup
   * Custom membership provider
   * Admin panel layout
