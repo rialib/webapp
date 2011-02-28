@@ -1,7 +1,7 @@
 ﻿Web Application Starter Kit
 ===========================
 
-ASP.NET MVC based, open source, standards compliant, and extensible web application project template, aka Starter Kit.
+**ASP.NET MVC based, open source, standards compliant, and extensible web application project template, aka Starter Kit.**
 
 The latest version is at [http://github.com/rialib/webapp](http://github.com/rialib/webapp)
 
