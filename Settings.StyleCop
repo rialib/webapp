@@ -7,8 +7,16 @@
             <BooleanProperty Name="Enabled">False</BooleanProperty>
           </RuleSettings>
         </Rule>
+        <Rule Name="EnumerationItemsMustBeDocumented">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
       </Rules>
-      <AnalyzerSettings />
+      <AnalyzerSettings>
+        <StringProperty Name="CompanyName">RIA Library Foundation</StringProperty>
+        <StringProperty Name="Copyright">Copyright © 2011 RIA Library Foundation. All rights reserved.</StringProperty>
+      </AnalyzerSettings>
     </Analyzer>
     <Analyzer AnalyzerId="Microsoft.StyleCop.CSharp.ReadabilityRules">
       <Rules>
