@@ -10,7 +10,7 @@ Technologies used in this kit:
 * Entity Framework 4.0
 * Enterprise Library 5.1
 
-Credits:
---------
+Credits
+-------
 
 Web Application Starter Kit is Open Source, released under the terms of the new BSD license; see the LICENSE.md file.
