@@ -20,7 +20,7 @@ What's In the bag?
 Technologies used
 ------------
 
- * [.NET Framework 4.0](http://www.microsoft.com/net/), [C#](http://msdn.microsoft.com/vcsharp)
+ * [.NET Framework 4.0](http://msdn.microsoft.com/netframework), [C#](http://msdn.microsoft.com/vcsharp)
  * [ASP.NET MVC 3.0](http://www.asp.net/mvc)
  * [Entity Framework 5.0](http://msdn.microsoft.com/en-us/data/aa937723)
  * [Enterprise Library 5.0](http://msdn.microsoft.com/en-us/library/ff648951.aspx)
