@@ -5,14 +5,25 @@ ASP.NET MVC based, open source, standards compliant, and extensible web applicat
 
 The latest version is at [http://github.com/rialib/webapp](http://github.com/rialib/webapp)
 
-Technologies
+What's In the bag?
+------------------
+
+  * Multi-project structure
+  * IoC setup with Unity 2.0
+  * Global error handling and logging
+  * Custom error pages
+  * Data access layer mockup
+  * Custom membership provider
+  * Admin panel layout
+
+Technologies used
 ------------
 This kit utilizes the following technologies:
 
-* .NET Framework 4.0, C#
-* ASP.NET MVC 3.0
-* Entity Framework 4.0
-* Enterprise Library 5.1
+ * .NET Framework 4.0, C#
+ * ASP.NET MVC 3.0
+ * Entity Framework 4.0
+ * Enterprise Library 5.1
 
 Credits
 -------
