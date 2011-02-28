@@ -15,6 +15,7 @@ What's In the bag?
   * Data access layer mockup
   * Custom membership provider
   * Admin panel layout
+  * Wait, there is more...
 
 Technologies used
 ------------
