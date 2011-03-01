@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Web Application Starter Kit")]
 [assembly: AssemblyCopyright("Copyright © 2011 RIA Library Foundation")]
 [assembly: AssemblyTrademark("WebApp")]
-[assembly: AssemblyCulture("en-US")]
+[assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

@@ -11,8 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90226E72-84E9-449A-88BC-BAF2F7B282A6}"
 	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
 		Settings.StyleCop = Settings.StyleCop
 		Solution Items\SolutionInfo.cs = Solution Items\SolutionInfo.cs
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		WebApp.vsmdi = WebApp.vsmdi
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core", "App.Core\App.Core.csproj", "{ED29BEE4-1B43-4F67-9375-A155BB50A077}"
@@ -25,7 +28,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Web.Tests", "App.Web.Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{739D0608-D982-4BB6-B23D-0AB70520759E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Data.Tests", "App.Data.Tests\App.Data.Tests.csproj", "{07080960-ED4E-4D39-BAFC-BA7DB291213C}"
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = WebApp.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -47,11 +55,16 @@ Global
 		{7A2E4542-A31F-4E1B-91D7-49405D0E1B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A2E4542-A31F-4E1B-91D7-49405D0E1B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A2E4542-A31F-4E1B-91D7-49405D0E1B10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07080960-ED4E-4D39-BAFC-BA7DB291213C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07080960-ED4E-4D39-BAFC-BA7DB291213C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07080960-ED4E-4D39-BAFC-BA7DB291213C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07080960-ED4E-4D39-BAFC-BA7DB291213C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7A2E4542-A31F-4E1B-91D7-49405D0E1B10} = {739D0608-D982-4BB6-B23D-0AB70520759E}
+		{07080960-ED4E-4D39-BAFC-BA7DB291213C} = {739D0608-D982-4BB6-B23D-0AB70520759E}
 	EndGlobalSection
 EndGlobal
