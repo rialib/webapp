@@ -27,6 +27,13 @@ Technologies used
  * [Enterprise Library 5.0](http://msdn.microsoft.com/en-us/library/ff648951.aspx)
  * [jQuery 1.5.1](http://www.jquery.com)
 
+Want to participate in this project?
+------------------------------------
+
+ * Fill free to [fork](https://github.com/rialib/webapp) this repo and [pull back](https://github.com/rialib/webapp/pull/new/master) your updates
+ * Participate in [discussions](https://groups.google.com/forum/#!forum/rialib), share your feedback, [submit issues](https://github.com/rialib/webapp/issues)
+ * Follow us on [Twitter](http://twitter.com/rialib)
+ 
 Credits
 -------
 
