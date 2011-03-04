@@ -26,7 +26,7 @@ namespace App.Services
             this.db = membershipContext;
         }
 
-        Membership.User GetUser(int userID, bool NoTracking)
+        public Membership.User GetUser(int userID, bool NoTracking)
         {
             if (NoTracking)
             {
@@ -36,7 +36,7 @@ namespace App.Services
             return db.Users.Find(userID);
         }
 
-        Membership.User GetUser(string username, bool NoTracking)
+        public Membership.User GetUser(string username, bool NoTracking)
         {
             if (NoTracking)
             {

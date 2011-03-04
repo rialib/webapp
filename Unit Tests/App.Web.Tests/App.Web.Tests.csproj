@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Solution Items\SolutionInfo.cs">
+    <Compile Include="..\..\Solution Items\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,11 +60,11 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\App.Core\App.Core.csproj">
+    <ProjectReference Include="..\..\App.Core\App.Core.csproj">
       <Project>{ED29BEE4-1B43-4F67-9375-A155BB50A077}</Project>
       <Name>App.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\App.Web\App.Web.csproj">
+    <ProjectReference Include="..\..\App.Web\App.Web.csproj">
       <Project>{A70699EF-5C1D-46BB-BE99-7794238DA0B1}</Project>
       <Name>App.Web</Name>
     </ProjectReference>

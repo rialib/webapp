@@ -22,11 +22,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core", "App.Core\App.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Web", "App.Web\App.Web.csproj", "{A70699EF-5C1D-46BB-BE99-7794238DA0B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Web.Tests", "App.Web.Tests\App.Web.Tests.csproj", "{7A2E4542-A31F-4E1B-91D7-49405D0E1B10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Web.Tests", "Unit Tests\App.Web.Tests\App.Web.Tests.csproj", "{7A2E4542-A31F-4E1B-91D7-49405D0E1B10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{739D0608-D982-4BB6-B23D-0AB70520759E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core.Tests", "App.Core.Tests\App.Core.Tests.csproj", "{AD914AE9-3666-4620-8860-99D50CBB087E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core.Tests", "Unit Tests\App.Core.Tests\App.Core.Tests.csproj", "{AD914AE9-3666-4620-8860-99D50CBB087E}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
