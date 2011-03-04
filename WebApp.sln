@@ -11,10 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90226E72-84E9-449A-88BC-BAF2F7B282A6}"
 	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
+		Solution Items\Local.testsettings = Solution Items\Local.testsettings
 		Settings.StyleCop = Settings.StyleCop
 		Solution Items\SolutionInfo.cs = Solution Items\SolutionInfo.cs
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		Solution Items\TraceAndTestImpact.testsettings = Solution Items\TraceAndTestImpact.testsettings
 		WebApp.vsmdi = WebApp.vsmdi
 	EndProjectSection
 EndProject
