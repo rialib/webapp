@@ -122,10 +122,6 @@
       <Project>{ED29BEE4-1B43-4F67-9375-A155BB50A077}</Project>
       <Name>App.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\App.Data\App.Data.csproj">
-      <Project>{0192D10F-E1EE-4027-A342-1F9E754BF478}</Project>
-      <Name>App.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />

@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace App.Data.Models.Membership
+namespace App.Models.Membership
 {
     using System;
     using System.Data.Entity;
@@ -13,13 +13,16 @@ namespace App.Data.Models.Membership
     public class User
     {
         [Key]
-        public int ID { get; set; }
+        public int UserID { get; set; }
 
         [Required, MaxLength(50)]
         public string UserName { get; set; }
 
         [Required, MaxLength(100)]
         public string Email { get; set; }
+
+        [Required, MaxLength(32)]
+        public string EmailHash { get; set; }
 
         [Required, MaxLength(50)]
         public string DisplayName { get; set; }

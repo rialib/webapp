@@ -4,23 +4,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace App.Data.Models.Membership
+namespace App.Models.Membership
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.ComponentModel.DataAnnotations;
 
     public class Profile
     {
-        [Key, ForeignKey("ID")]
+        [Key]
         public int UserID { get; set; }
 
-        [MaxLength(27)]
+        [MaxLength(20)]
         public string FirstName { get; set; }
 
-        [MaxLength(25)]
+        [MaxLength(20)]
         public string LastName { get; set; }
 
         public virtual User User { get; set; }

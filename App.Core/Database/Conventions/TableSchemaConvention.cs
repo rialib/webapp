@@ -4,13 +4,13 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace App.Data.Configuration
+namespace App.Database.Conventions
 {
     using System;
     using System.Data.Entity.ModelConfiguration.Configuration.Types;
     using System.Data.Entity.ModelConfiguration.Conventions.Configuration;
 
-    public class TableSchemaConvention : IConfigurationConvention<Type, EntityTypeConfiguration>
+    internal class TableSchemaConvention : IConfigurationConvention<Type, EntityTypeConfiguration>
     {
         void IConfigurationConvention<Type, EntityTypeConfiguration>.Apply(Type memberInfo, Func<EntityTypeConfiguration> configuration)
         {
